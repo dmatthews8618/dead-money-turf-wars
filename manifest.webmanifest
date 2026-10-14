@@ -1,0 +1,31 @@
+{
+  "id": "/dead-money-turf-wars/",
+  "name": "Dead Money: Turf Wars",
+  "short_name": "Dead Money",
+  "description": "1997-inspired fictional trading rivalry",
+  "start_url": "/dead-money-turf-wars/",
+  "scope": "/dead-money-turf-wars/",
+  "display": "standalone",
+  "background_color": "#0b100e",
+  "theme_color": "#17201b",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
