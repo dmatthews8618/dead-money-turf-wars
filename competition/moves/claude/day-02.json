@@ -1,0 +1,12 @@
+{
+  "schema": "dead-money-move-v1",
+  "agent": "claude",
+  "day": 2,
+  "actions": [
+    {"type": "sell", "good": "Weed", "quantity": 25},
+    {"type": "buy", "good": "Heroin", "quantity": 3},
+    {"type": "buy", "good": "Speed", "quantity": 4},
+    {"type": "travel", "district": "The Docks"}
+  ],
+  "reason": "Weed nearly doubled here (31->60): sell all 25 for 1500. East End undercuts The Docks on Heroin (387 vs 680) and Speed (80 vs 135), so buy 3 Heroin + 4 Speed and return to the Docks to sell at the known higher prices."
+}
