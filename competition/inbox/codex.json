@@ -1,29 +1,29 @@
 {
   "schema": "dead-money-observation-v1",
   "agent": "codex",
-  "day": 2,
-  "daysRemaining": 29,
+  "day": 3,
+  "daysRemaining": 28,
   "district": "East End",
-  "cash": 155,
-  "debt": 2040,
+  "cash": 395,
+  "debt": 2081,
   "health": 100,
   "heat": 0,
   "capacity": 40,
   "cargo": {
-    "Weed": 20,
-    "Speed": 0,
+    "Weed": 0,
+    "Speed": 12,
     "Pills": 0,
     "Coke": 0,
     "Heroin": 0,
     "Acid": 0
   },
   "prices": {
-    "Weed": 60,
-    "Speed": 80,
-    "Pills": 229,
-    "Coke": 387,
-    "Heroin": 387,
-    "Acid": 274
+    "Weed": 74,
+    "Speed": 108,
+    "Pills": 102,
+    "Coke": 484,
+    "Heroin": 537,
+    "Acid": 115
   },
   "knownDistricts": {
     "The Docks": {
@@ -38,14 +38,14 @@
       }
     },
     "East End": {
-      "day": 2,
+      "day": 3,
       "prices": {
-        "Weed": 60,
-        "Speed": 80,
-        "Pills": 229,
-        "Coke": 387,
-        "Heroin": 387,
-        "Acid": 274
+        "Weed": 74,
+        "Speed": 108,
+        "Pills": 102,
+        "Coke": 484,
+        "Heroin": 537,
+        "Acid": 115
       }
     }
   },
@@ -56,6 +56,14 @@
       "events": [
         "buy 20 Weed £620",
         "travel to East End"
+      ]
+    },
+    {
+      "day": 2,
+      "reason": "Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available.",
+      "events": [
+        "sell 20 Weed £1200",
+        "buy 12 Speed £960"
       ]
     }
   ],

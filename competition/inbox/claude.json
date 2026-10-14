@@ -1,40 +1,40 @@
 {
   "schema": "dead-money-observation-v1",
   "agent": "claude",
-  "day": 2,
-  "daysRemaining": 29,
-  "district": "East End",
-  "cash": 0,
-  "debt": 2040,
+  "day": 3,
+  "daysRemaining": 28,
+  "district": "The Docks",
+  "cash": 74,
+  "debt": 2081,
   "health": 100,
   "heat": 0,
   "capacity": 40,
   "cargo": {
-    "Weed": 25,
-    "Speed": 0,
+    "Weed": 0,
+    "Speed": 3,
     "Pills": 0,
     "Coke": 0,
-    "Heroin": 0,
+    "Heroin": 3,
     "Acid": 0
   },
   "prices": {
-    "Weed": 60,
-    "Speed": 80,
-    "Pills": 229,
-    "Coke": 387,
-    "Heroin": 387,
-    "Acid": 274
+    "Weed": 59,
+    "Speed": 78,
+    "Pills": 226,
+    "Coke": 383,
+    "Heroin": 380,
+    "Acid": 272
   },
   "knownDistricts": {
     "The Docks": {
-      "day": 1,
+      "day": 3,
       "prices": {
-        "Weed": 31,
-        "Speed": 135,
-        "Pills": 142,
-        "Coke": 189,
-        "Heroin": 680,
-        "Acid": 165
+        "Weed": 59,
+        "Speed": 78,
+        "Pills": 226,
+        "Coke": 383,
+        "Heroin": 380,
+        "Acid": 272
       }
     },
     "East End": {
@@ -56,6 +56,16 @@
       "events": [
         "buy 25 Weed £775",
         "travel to East End"
+      ]
+    },
+    {
+      "day": 2,
+      "reason": "Corrected: travel costs £25 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher.",
+      "events": [
+        "sell 25 Weed £1500",
+        "buy 3 Heroin £1161",
+        "buy 3 Speed £240",
+        "travel to The Docks"
       ]
     }
   ],

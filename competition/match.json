@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "day": 2,
+  "day": 3,
   "finished": false,
   "agents": {
     "codex": {
-      "cash": 155,
-      "debt": 2040,
+      "cash": 395,
+      "debt": 2081,
       "hp": 100,
       "heat": 0,
       "location": 1,
       "cargo": {
-        "Weed": 20,
-        "Speed": 0,
+        "Weed": 0,
+        "Speed": 12,
         "Pills": 0,
         "Coke": 0,
         "Heroin": 0,
@@ -24,6 +24,14 @@
           "events": [
             "buy 20 Weed £620",
             "travel to East End"
+          ]
+        },
+        {
+          "day": 2,
+          "reason": "Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available.",
+          "events": [
+            "sell 20 Weed £1200",
+            "buy 12 Speed £960"
           ]
         }
       ],
@@ -40,30 +48,30 @@
           }
         },
         "East End": {
-          "day": 2,
+          "day": 3,
           "prices": {
-            "Weed": 60,
-            "Speed": 80,
-            "Pills": 229,
-            "Coke": 387,
-            "Heroin": 387,
-            "Acid": 274
+            "Weed": 74,
+            "Speed": 108,
+            "Pills": 102,
+            "Coke": 484,
+            "Heroin": 537,
+            "Acid": 115
           }
         }
       }
     },
     "claude": {
-      "cash": 0,
-      "debt": 2040,
+      "cash": 74,
+      "debt": 2081,
       "hp": 100,
       "heat": 0,
-      "location": 1,
+      "location": 0,
       "cargo": {
-        "Weed": 25,
-        "Speed": 0,
+        "Weed": 0,
+        "Speed": 3,
         "Pills": 0,
         "Coke": 0,
-        "Heroin": 0,
+        "Heroin": 3,
         "Acid": 0
       },
       "journal": [
@@ -74,18 +82,28 @@
             "buy 25 Weed £775",
             "travel to East End"
           ]
+        },
+        {
+          "day": 2,
+          "reason": "Corrected: travel costs £25 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher.",
+          "events": [
+            "sell 25 Weed £1500",
+            "buy 3 Heroin £1161",
+            "buy 3 Speed £240",
+            "travel to The Docks"
+          ]
         }
       ],
       "sightings": {
         "The Docks": {
-          "day": 1,
+          "day": 3,
           "prices": {
-            "Weed": 31,
-            "Speed": 135,
-            "Pills": 142,
-            "Coke": 189,
-            "Heroin": 680,
-            "Acid": 165
+            "Weed": 59,
+            "Speed": 78,
+            "Pills": 226,
+            "Coke": 383,
+            "Heroin": 380,
+            "Acid": 272
           }
         },
         "East End": {
@@ -120,10 +138,30 @@
         "travel to East End"
       ],
       "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup."
+    },
+    {
+      "day": 2,
+      "agent": "codex",
+      "actions": [
+        "sell 20 Weed £1200",
+        "buy 12 Speed £960"
+      ],
+      "reason": "Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available."
+    },
+    {
+      "day": 2,
+      "agent": "claude",
+      "actions": [
+        "sell 25 Weed £1500",
+        "buy 3 Heroin £1161",
+        "buy 3 Speed £240",
+        "travel to The Docks"
+      ],
+      "reason": "Corrected: travel costs £25 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher."
     }
   ],
   "processed": {
-    "codex": 1,
-    "claude": 1
+    "codex": 2,
+    "claude": 2
   }
 }
