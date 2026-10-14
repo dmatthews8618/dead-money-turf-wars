@@ -3,10 +3,25 @@
   "agent": "claude",
   "day": 2,
   "actions": [
-    {"type": "sell", "good": "Weed", "quantity": 25},
-    {"type": "buy", "good": "Heroin", "quantity": 3},
-    {"type": "buy", "good": "Speed", "quantity": 4},
-    {"type": "travel", "district": "The Docks"}
+    {
+      "type": "sell",
+      "good": "Weed",
+      "quantity": 25
+    },
+    {
+      "type": "buy",
+      "good": "Heroin",
+      "quantity": 3
+    },
+    {
+      "type": "buy",
+      "good": "Speed",
+      "quantity": 3
+    },
+    {
+      "type": "travel",
+      "district": "The Docks"
+    }
   ],
-  "reason": "Weed nearly doubled here (31->60): sell all 25 for 1500. East End undercuts The Docks on Heroin (387 vs 680) and Speed (80 vs 135), so buy 3 Heroin + 4 Speed and return to the Docks to sell at the known higher prices."
+  "reason": "Corrected: travel costs \u00a325 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher."
 }
