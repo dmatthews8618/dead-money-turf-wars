@@ -13,7 +13,7 @@ function initial(){return {version:1,day:1,finished:false,agents:Object.fromEntr
 let s=fs.existsSync(path.join(data,'match.json'))?read('competition/match.json'):initial();
 const worth=a=>a.cash-a.debt+goods.reduce((n,g,i)=>n+a.cargo[g]*prices(s.day,a.location)[i],0);
 const observe=(id)=>{const a=s.agents[id];return {schema:'dead-money-observation-v1',agent:id,day:s.day,daysRemaining:31-s.day,district:districts[a.location],cash:a.cash,debt:a.debt,health:a.hp,heat:a.heat,capacity:40,cargo:a.cargo,prices:Object.fromEntries(goods.map((g,i)=>[g,prices(s.day,a.location)[i]])),knownDistricts:a.sightings,journal:a.journal.slice(-12),allowedActions:['buy','sell','repay','travel','lay_low','hold']}};
-function apply(id,move){const a=s.agents[id],day=s.day,pr=prices(day,a.location),event=[];if(move.schema!=='dead-money-move-v1'||move.agent!==id||move.day!==day||!Array.isArray(move.actions)||move.actions.length>8||typeof move.reason!=='string'||move.reason.length>1000)throw Error('Invalid move envelope');
+function apply(id,move){const a=structuredClone(s.agents[id]),day=s.day,pr=prices(day,a.location),event=[];if(move.schema!=='dead-money-move-v1'||move.agent!==id||move.day!==day||!Array.isArray(move.actions)||move.actions.length>8||typeof move.reason!=='string'||move.reason.length>1000)throw Error('Invalid move envelope');
 const allowed=new Set(['buy','sell','repay','travel','lay_low','hold']);let traveled=false;
 for(const action of move.actions){if(!action||!allowed.has(action.type))throw Error('Invalid action');const type=action.type;
 if(type==='buy'||type==='sell'){const i=goods.indexOf(action.good),q=action.quantity;if(i<0||!Number.isInteger(q)||q<1||q>40)throw Error('Invalid goods or quantity');const amount=pr[i]*q;
@@ -24,8 +24,8 @@ else if(type==='travel'){const d=districts.indexOf(action.district);if(traveled|
 else if(type==='lay_low'){if(a.cash<100)throw Error('Cannot afford to lie low');a.cash-=100;a.heat=Math.max(0,a.heat-25);event.push('lay low')}
 else event.push('hold')}
 a.journal.push({day,reason:move.reason.slice(0,1000),events:event});a.journal=a.journal.slice(-24);
-a.sightings[districts[observe(id).district===districts[a.location]?a.location:0]]??={}; // replaced below by observation writer
-s.events.push({day,agent:id,actions:event,reason:move.reason.slice(0,1000)});s.processed[id]=day;
+
+s.agents[id]=a;s.events.push({day,agent:id,actions:event,reason:move.reason.slice(0,1000)});s.processed[id]=day;
 }
 function publish(){for(const id of agents){const a=s.agents[id],o=observe(id);a.sightings[o.district]={day:s.day,prices:o.prices};write('competition/inbox/'+id+'.json',o)}write('competition/match.json',s);
 const lines=['# DEAD MONEY — Match report','','Day: **'+s.day+'/30**','Status: **'+(s.finished?'Finished':'Waiting for agent moves')+'**','','| Agent | Cash | Debt | Net worth | District |','|---|---:|---:|---:|---|',...agents.map(id=>{const a=s.agents[id];return '| '+id+' | £'+a.cash+' | £'+a.debt+' | £'+worth(a)+' | '+districts[a.location]+' |'}) ,'','## Recent decisions',...s.events.slice(-12).map(e=>'- Day '+e.day+' **'+e.agent+'**: '+e.actions.join('; ')+' — '+e.reason),'','Agents submit competition/moves/<agent>/day-XX.json, then run the workflow.'];fs.writeFileSync(path.join(data,'REPORT.md'),lines.join('\n')+'\n')}
