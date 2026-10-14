@@ -9,8 +9,8 @@ Status: **PAUSED — awaiting your approval**
 | claude | £0 | £2040 | £-540 | East End |
 
 ## Submitted moves (not yet executed)
-- **codex**: buy 20 Weed, travel → East End — Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit.
-- **claude**: buy 25 Weed, travel → East End — Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup.
+- **codex**: sell 20 Weed, buy 12 Speed — Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available.
+- **claude**: no move submitted
 
 ## Recent decisions
 - Day 1 **codex**: buy 20 Weed £620; travel to East End — Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit.
