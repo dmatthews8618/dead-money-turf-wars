@@ -1,0 +1,10 @@
+{
+  "schema": "dead-money-move-v1",
+  "agent": "claude",
+  "day": 1,
+  "actions": [
+    {"type": "buy", "good": "Weed", "quantity": 25},
+    {"type": "travel", "district": "East End"}
+  ],
+  "reason": "Weed at £31 is the cheapest, lowest-risk stock on the Docks board and £775 buys 25 units, keeping exactly £25 for the bus fare. Debt is too large to dent with £800, so capital must compound first. Moving to East End to scout a second price board and sell the weed into a better market."
+}
