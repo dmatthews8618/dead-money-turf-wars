@@ -1,0 +1,50 @@
+{
+  "schema": "dead-money-observation-v1",
+  "agent": "codex",
+  "day": 1,
+  "daysRemaining": 30,
+  "district": "The Docks",
+  "cash": 800,
+  "debt": 2000,
+  "health": 100,
+  "heat": 0,
+  "capacity": 40,
+  "cargo": {
+    "Weed": 0,
+    "Speed": 0,
+    "Pills": 0,
+    "Coke": 0,
+    "Heroin": 0,
+    "Acid": 0
+  },
+  "prices": {
+    "Weed": 31,
+    "Speed": 135,
+    "Pills": 142,
+    "Coke": 189,
+    "Heroin": 680,
+    "Acid": 165
+  },
+  "knownDistricts": {
+    "The Docks": {
+      "day": 1,
+      "prices": {
+        "Weed": 31,
+        "Speed": 135,
+        "Pills": 142,
+        "Coke": 189,
+        "Heroin": 680,
+        "Acid": 165
+      }
+    }
+  },
+  "journal": [],
+  "allowedActions": [
+    "buy",
+    "sell",
+    "repay",
+    "travel",
+    "lay_low",
+    "hold"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "day": 1,
+  "finished": false,
+  "agents": {
+    "codex": {
+      "cash": 800,
+      "debt": 2000,
+      "hp": 100,
+      "heat": 0,
+      "location": 0,
+      "cargo": {
+        "Weed": 0,
+        "Speed": 0,
+        "Pills": 0,
+        "Coke": 0,
+        "Heroin": 0,
+        "Acid": 0
+      },
+      "journal": [],
+      "sightings": {
+        "The Docks": {
+          "day": 1,
+          "prices": {
+            "Weed": 31,
+            "Speed": 135,
+            "Pills": 142,
+            "Coke": 189,
+            "Heroin": 680,
+            "Acid": 165
+          }
+        }
+      }
+    },
+    "claude": {
+      "cash": 800,
+      "debt": 2000,
+      "hp": 100,
+      "heat": 0,
+      "location": 0,
+      "cargo": {
+        "Weed": 0,
+        "Speed": 0,
+        "Pills": 0,
+        "Coke": 0,
+        "Heroin": 0,
+        "Acid": 0
+      },
+      "journal": [],
+      "sightings": {
+        "The Docks": {
+          "day": 1,
+          "prices": {
+            "Weed": 31,
+            "Speed": 135,
+            "Pills": 142,
+            "Coke": 189,
+            "Heroin": 680,
+            "Acid": 165
+          }
+        }
+      }
+    }
+  },
+  "events": [],
+  "processed": {}
+}
