@@ -1,16 +1,16 @@
 {
   "schema": "dead-money-observation-v1",
   "agent": "claude",
-  "day": 1,
-  "daysRemaining": 30,
-  "district": "The Docks",
-  "cash": 800,
-  "debt": 2000,
+  "day": 2,
+  "daysRemaining": 29,
+  "district": "East End",
+  "cash": 0,
+  "debt": 2040,
   "health": 100,
   "heat": 0,
   "capacity": 40,
   "cargo": {
-    "Weed": 0,
+    "Weed": 25,
     "Speed": 0,
     "Pills": 0,
     "Coke": 0,
@@ -18,12 +18,12 @@
     "Acid": 0
   },
   "prices": {
-    "Weed": 31,
-    "Speed": 135,
-    "Pills": 142,
-    "Coke": 189,
-    "Heroin": 680,
-    "Acid": 165
+    "Weed": 60,
+    "Speed": 80,
+    "Pills": 229,
+    "Coke": 387,
+    "Heroin": 387,
+    "Acid": 274
   },
   "knownDistricts": {
     "The Docks": {
@@ -36,9 +36,29 @@
         "Heroin": 680,
         "Acid": 165
       }
+    },
+    "East End": {
+      "day": 2,
+      "prices": {
+        "Weed": 60,
+        "Speed": 80,
+        "Pills": 229,
+        "Coke": 387,
+        "Heroin": 387,
+        "Acid": 274
+      }
     }
   },
-  "journal": [],
+  "journal": [
+    {
+      "day": 1,
+      "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup.",
+      "events": [
+        "buy 25 Weed £775",
+        "travel to East End"
+      ]
+    }
+  ],
   "allowedActions": [
     "buy",
     "sell",

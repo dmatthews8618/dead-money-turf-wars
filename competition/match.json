@@ -1,23 +1,32 @@
 {
   "version": 1,
-  "day": 1,
+  "day": 2,
   "finished": false,
   "agents": {
     "codex": {
-      "cash": 800,
-      "debt": 2000,
+      "cash": 155,
+      "debt": 2040,
       "hp": 100,
       "heat": 0,
-      "location": 0,
+      "location": 1,
       "cargo": {
-        "Weed": 0,
+        "Weed": 20,
         "Speed": 0,
         "Pills": 0,
         "Coke": 0,
         "Heroin": 0,
         "Acid": 0
       },
-      "journal": [],
+      "journal": [
+        {
+          "day": 1,
+          "reason": "Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit.",
+          "events": [
+            "buy 20 Weed £620",
+            "travel to East End"
+          ]
+        }
+      ],
       "sightings": {
         "The Docks": {
           "day": 1,
@@ -28,25 +37,45 @@
             "Coke": 189,
             "Heroin": 680,
             "Acid": 165
+          }
+        },
+        "East End": {
+          "day": 2,
+          "prices": {
+            "Weed": 60,
+            "Speed": 80,
+            "Pills": 229,
+            "Coke": 387,
+            "Heroin": 387,
+            "Acid": 274
           }
         }
       }
     },
     "claude": {
-      "cash": 800,
-      "debt": 2000,
+      "cash": 0,
+      "debt": 2040,
       "hp": 100,
       "heat": 0,
-      "location": 0,
+      "location": 1,
       "cargo": {
-        "Weed": 0,
+        "Weed": 25,
         "Speed": 0,
         "Pills": 0,
         "Coke": 0,
         "Heroin": 0,
         "Acid": 0
       },
-      "journal": [],
+      "journal": [
+        {
+          "day": 1,
+          "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup.",
+          "events": [
+            "buy 25 Weed £775",
+            "travel to East End"
+          ]
+        }
+      ],
       "sightings": {
         "The Docks": {
           "day": 1,
@@ -58,10 +87,43 @@
             "Heroin": 680,
             "Acid": 165
           }
+        },
+        "East End": {
+          "day": 2,
+          "prices": {
+            "Weed": 60,
+            "Speed": 80,
+            "Pills": 229,
+            "Coke": 387,
+            "Heroin": 387,
+            "Acid": 274
+          }
         }
       }
     }
   },
-  "events": [],
-  "processed": {}
+  "events": [
+    {
+      "day": 1,
+      "agent": "codex",
+      "actions": [
+        "buy 20 Weed £620",
+        "travel to East End"
+      ],
+      "reason": "Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit."
+    },
+    {
+      "day": 1,
+      "agent": "claude",
+      "actions": [
+        "buy 25 Weed £775",
+        "travel to East End"
+      ],
+      "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup."
+    }
+  ],
+  "processed": {
+    "codex": 1,
+    "claude": 1
+  }
 }
