@@ -1,8 +1,13 @@
 name: Dead Money report and turn processing
 on:
   workflow_dispatch:
+    inputs:
+      approve_day:
+        description: 'Day to approve and execute (leave blank for report only)'
+        required: false
+        type: string
   schedule:
-    - cron: '17 9,21 * * *'
+    - cron: '17 * * * *'
   push:
     paths:
       - 'competition/moves/**'
@@ -22,7 +27,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Process moves and generate reports
+      - name: Process approved moves and generate reports
+        env:
+          APPROVE_DAY: ${{ inputs.approve_day || '' }}
         run: node scripts/dead-money-turn.mjs
       - name: Commit match and reports
         run: |
