@@ -1,0 +1,29 @@
+name: Build PWA icons
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'icons/icon.svg'
+      - '.github/workflows/build-pwa-icons.yml'
+permissions:
+  contents: write
+jobs:
+  icons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render installable PNG icons
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin
+          rsvg-convert -w 192 -h 192 icons/icon.svg -o icons/icon-192.png
+          rsvg-convert -w 512 -h 512 icons/icon.svg -o icons/icon-512.png
+      - name: Commit generated icons
+        run: |
+          git config user.name "dead-money-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add icons/icon-192.png icons/icon-512.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate PWA PNG icons [skip ci]"
+            git push
+          fi
