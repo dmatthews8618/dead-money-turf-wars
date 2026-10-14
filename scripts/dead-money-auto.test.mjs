@@ -1,0 +1,43 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+const script = fileURLToPath(new URL('./dead-money-auto.mjs', import.meta.url));
+test('automatic turns wait, validate atomically, advance once, and stop at completion', () => {
+  const cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'dm-test-'));
+  const read = p => JSON.parse(fs.readFileSync(path.join(cwd, p), 'utf8'));
+  const write = (p, v) => { fs.mkdirSync(path.dirname(path.join(cwd, p)), {recursive:true}); fs.writeFileSync(path.join(cwd,p), JSON.stringify(v)); };
+  const run = () => spawnSync(process.execPath, [script], {cwd, encoding:'utf8'});
+  const move = (agent, day, actions = [{type:'hold'}]) => write(`competition/moves/${agent}/day-${String(day).padStart(2,'0')}.json`, {schema:'dead-money-move-v1',agent,day,actions,reason:'Synthetic test'});
+  try {
+    assert.equal(run().status, 0);
+    assert.equal(read('competition/match.json').day, 1);
+    move('codex',1);
+    assert.equal(run().status, 0);
+    assert.equal(read('competition/match.json').day, 1);
+    const before = fs.readFileSync(path.join(cwd,'competition/match.json'),'utf8');
+    move('claude',1,[{type:'sell',good:'Weed',quantity:1}]);
+    assert.notEqual(run().status, 0);
+    assert.equal(fs.readFileSync(path.join(cwd,'competition/match.json'),'utf8'), before);
+    move('claude',1);
+    move('codex',2);
+    move('claude',2);
+    assert.equal(run().status, 0);
+    assert.equal(read('competition/match.json').day, 2);
+    assert.equal(read('competition/match.json').agents.codex.journal.length, 1);
+    assert.match(fs.readFileSync(path.join(cwd,'competition/REPORT.md'),'utf8'), /Waiting for both players/);
+    fs.rmSync(path.join(cwd,'competition/moves/claude/day-02.json'));
+    assert.equal(run().status, 0);
+    assert.equal(read('competition/match.json').day, 2);
+    const state = read('competition/match.json'); state.day=30; write('competition/match.json',state);
+    move('codex',30); move('claude',30);
+    assert.equal(run().status,0);
+    assert.equal(read('competition/match.json').finished,true);
+    const finished = fs.readFileSync(path.join(cwd,'competition/match.json'),'utf8');
+    assert.equal(run().status,0);
+    assert.equal(fs.readFileSync(path.join(cwd,'competition/match.json'),'utf8'),finished);
+  } finally { fs.rmSync(cwd,{recursive:true,force:true}); }
+});

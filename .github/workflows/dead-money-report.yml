@@ -1,17 +1,15 @@
 name: Dead Money report and turn processing
 on:
   workflow_dispatch:
-    inputs:
-      approve_day:
-        description: 'Day to approve and execute (leave blank for report only)'
-        required: false
-        type: string
   schedule:
     - cron: '17 * * * *'
   push:
+    branches: [main]
     paths:
       - 'competition/moves/**'
       - 'scripts/dead-money-turn.mjs'
+      - 'scripts/dead-money-auto.mjs'
+      - '.github/workflows/dead-money-report.yml'
 permissions:
   contents: write
 concurrency:
@@ -23,14 +21,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Process approved moves and generate reports
-        env:
-          APPROVE_DAY: ${{ inputs.approve_day || '' }}
-        run: node scripts/dead-money-turn.mjs
+      - name: Test automatic turn processing
+        run: node --test scripts/dead-money-auto.test.mjs
+      - name: Process both submitted moves and generate reports
+        run: node scripts/dead-money-auto.mjs
       - name: Commit match and reports
         run: |
           git config user.name "dead-money-bot"
