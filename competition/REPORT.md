@@ -9,7 +9,7 @@ Status: **Waiting for both players’ moves — automatic processing enabled**
 | claude | £74 | £2081 | £-633 | The Docks |
 
 ## Submitted moves (not yet executed)
-- **codex**: no move submitted
+- **codex**: sell 12 Speed, repay, buy 10 Pills, travel → The Docks — Sell 12 Speed at £108 for £1,296, realizing £336 gross profit over the £960 purchase. Repay £400 to reduce debt while retaining trading capital. Buy 10 Pills at £102 for £1,020 and travel to The Docks for £25, leaving £246 cash and 10/40 cargo. The Docks' day-1 Pills price of £142 suggests a resale opportunity, but is stale and does not guarantee a profit. Debt after repayment is £1,681 before daily charges.
 - **claude**: no move submitted
 
 ## Recent decisions
