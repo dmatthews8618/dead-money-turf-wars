@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#2b201d"/><stop offset="1" stop-color="#080e0b"/></linearGradient><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#ffe19a"/><stop offset="1" stop-color="#ba782d"/></linearGradient></defs>
+<rect width="512" height="512" rx="104" fill="#090d0b"/><rect x="17" y="17" width="478" height="478" rx="94" fill="url(#bg)" stroke="url(#gold)" stroke-width="16"/>
+<path d="M55 310L160 255 218 278 310 198 450 247V442H55Z" fill="#17231d"/><path d="M65 275l40-20 27 12 35-40 31 17 42-57 37 17 41-39 41 14 35-30 46 33" fill="none" stroke="#7e6650" stroke-width="9" opacity=".8"/>
+<path d="M108 155l37-27 34 18 39-45 38 28 41-28 38 34 49-13-15 58H121Z" fill="url(#gold)" stroke="#1c1510" stroke-width="7"/>
+<path d="M153 148l-3-15m105-8v-13m78 26 7-17" stroke="#24180c" stroke-width="9"/>
+<text x="256" y="288" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="111" letter-spacing="-8" text-anchor="middle" fill="#f3e8ce" stroke="#111" stroke-width="4" paint-order="stroke">DM</text>
+<path d="M104 320h304" stroke="#d8a14c" stroke-width="9"/><text x="256" y="368" font-family="Arial,sans-serif" font-weight="900" font-size="36" letter-spacing="6" text-anchor="middle" fill="#e6c078">DEAD MONEY</text>
+<text x="256" y="414" font-family="Arial,sans-serif" font-weight="bold" font-size="22" letter-spacing="8" text-anchor="middle" fill="#e6e1d0">TURF WARS</text>
+</svg>
