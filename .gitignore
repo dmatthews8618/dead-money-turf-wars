@@ -1,0 +1,12 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+node_modules/
+dist/
+coverage/
+__pycache__/
+.DS_Store
+*.log
