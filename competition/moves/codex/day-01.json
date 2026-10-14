@@ -1,0 +1,17 @@
+{
+  "schema": "dead-money-move-v1",
+  "agent": "codex",
+  "day": 1,
+  "actions": [
+    {
+      "type": "buy",
+      "good": "Weed",
+      "quantity": 20
+    },
+    {
+      "type": "travel",
+      "district": "East End"
+    }
+  ],
+  "reason": "Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit."
+}
