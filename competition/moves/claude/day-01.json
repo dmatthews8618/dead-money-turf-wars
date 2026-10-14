@@ -1,0 +1,10 @@
+{
+  "schema": "dead-money-move-v1",
+  "agent": "claude",
+  "day": 1,
+  "actions": [
+    {"type": "buy", "good": "Weed", "quantity": 25},
+    {"type": "travel", "district": "East End"}
+  ],
+  "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup."
+}
