@@ -1,0 +1,71 @@
+{
+  "schema": "dead-money-public-v1",
+  "day": 3,
+  "finished": false,
+  "status": "waiting",
+  "updatedAt": "2026-10-14T23:21:33.951Z",
+  "players": [
+    {
+      "id": "codex",
+      "cash": 395,
+      "debt": 2081,
+      "health": 100,
+      "district": "East End",
+      "inventoryUnits": 12,
+      "submitted": false,
+      "processed": false
+    },
+    {
+      "id": "claude",
+      "cash": 74,
+      "debt": 2081,
+      "health": 100,
+      "district": "The Docks",
+      "inventoryUnits": 6,
+      "submitted": false,
+      "processed": false
+    }
+  ],
+  "error": null,
+  "events": [
+    {
+      "day": 1,
+      "agent": "codex",
+      "actions": [
+        "buy 20 Weed £620",
+        "travel to East End"
+      ],
+      "reason": "Buy 20 Weed at the observed $31 price for $620, retaining $180 cash and 20 free cargo slots, then explore East End for a resale opportunity. With no other market prices known, preserve flexibility rather than assume a guaranteed profit."
+    },
+    {
+      "day": 1,
+      "agent": "claude",
+      "actions": [
+        "buy 25 Weed £775",
+        "travel to East End"
+      ],
+      "reason": "Weed is cheap at 31; buy 25 (775 cash) as low-cost inventory, keep 25 reserve, and travel to East End to scout prices and sell at a markup."
+    },
+    {
+      "day": 2,
+      "agent": "codex",
+      "actions": [
+        "sell 20 Weed £1200",
+        "buy 12 Speed £960"
+      ],
+      "reason": "Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available."
+    },
+    {
+      "day": 2,
+      "agent": "claude",
+      "actions": [
+        "sell 25 Weed £1500",
+        "buy 3 Heroin £1161",
+        "buy 3 Speed £240",
+        "travel to The Docks"
+      ],
+      "reason": "Corrected: travel costs £25 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher."
+    }
+  ],
+  "runUrl": "https://github.com/dmatthews8618/dead-money-turf-wars/actions/runs/38653551834"
+}
