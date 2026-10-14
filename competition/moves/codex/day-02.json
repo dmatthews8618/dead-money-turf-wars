@@ -1,0 +1,18 @@
+{
+  "schema": "dead-money-move-v1",
+  "agent": "codex",
+  "day": 2,
+  "actions": [
+    {
+      "type": "sell",
+      "good": "Weed",
+      "quantity": 20
+    },
+    {
+      "type": "buy",
+      "good": "Speed",
+      "quantity": 12
+    }
+  ],
+  "reason": "Sell all 20 Weed at £60 for £1,200, realizing £580 gross trading profit on the £620 purchase. Buy 12 Speed at £80 for £960, leaving £395 before any daily charges. Speed is below the only other observed price (£135 at The Docks on Day 1), although that historical price does not guarantee a future resale profit. Keep cash and cargo room available."
+}
