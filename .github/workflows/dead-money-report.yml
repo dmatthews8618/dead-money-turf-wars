@@ -1,0 +1,35 @@
+name: Dead Money report and turn processing
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9,21 * * *'
+  push:
+    paths:
+      - 'competition/moves/**'
+      - 'scripts/dead-money-turn.mjs'
+permissions:
+  contents: write
+concurrency:
+  group: dead-money-match
+  cancel-in-progress: false
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Process moves and generate reports
+        run: node scripts/dead-money-turn.mjs
+      - name: Commit match and reports
+        run: |
+          git config user.name "dead-money-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add competition/match.json competition/REPORT.md competition/inbox/
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Dead Money competition report [skip ci]"
+            git push
+          fi
