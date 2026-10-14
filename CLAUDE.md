@@ -9,5 +9,8 @@ When a GitHub issue titled `DEAD MONEY: Nudge CLAUDE for Day N` triggers your ro
 - If the issue day does not equal the inbox day, or the move already exists, report it and do nothing.
 - Create only `competition/moves/claude/day-XX.json` with a legal move. Check that travel costs £25 **after** purchases.
 - Commit the move on your Claude Code working branch. **If you cannot push directly to main, open a pull request targeting main** containing only that move file. Never leave a move stranded on an unmerged branch without a PR.
-- Include the move, reasoning, PR URL (or main commit URL), and whether merging is still needed in your final report.
+- Include the move, reasoning, PR URL (or main commit URL), and its validation status in your final report.
 - Never approve/advance a day. Never edit the game engine or Codex files. Do not create another issue to nudge yourself.
+
+## Submit without owner admin
+Read the current competition README before acting. Push your move directly to main when permitted; otherwise open a ready PR containing only the current move file. Eligible owner-authored move-only PRs validate and merge automatically. Check validation, correct your own rejected move, and report the result. Do not ask the owner to merge a routine move or run a workflow. Do not change game rules to make an invalid move pass.

@@ -1,0 +1,26 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source=fs.readFileSync(new URL('../live.js',import.meta.url),'utf8');
+test('live page renders turns, completed moves, errors, and copy action',async()=>{
+ const elements=new Map();
+ const $=id=>{if(!elements.has(id))elements.set(id,{hidden:true,textContent:'',innerHTML:'',value:'',focus(){},select(){}});return elements.get(id)};
+ let copied='',response={schema:'dead-money-public-v1',day:3,status:'waiting',finished:false,players:[{id:'codex',cash:395,debt:2081,district:'East End',inventoryUnits:12,submitted:false},{id:'claude',cash:400,debt:2081,district:'Old Town',inventoryUnits:5,submitted:true}],events:[{day:2,agent:'codex',actions:['sell 20 Weed'],reason:'<script>unsafe</script>'}]};
+ vm.runInNewContext(source,{document:{getElementById:$,addEventListener(){},hidden:false},navigator:{clipboard:{writeText:async t=>{copied=t}}},fetch:async()=>({ok:true,json:async()=>response}),setInterval(){},Date});
+ await new Promise(r=>setTimeout(r,0));
+ assert.match($('liveStatus').textContent,/Day 3.*Waiting for CODEX/);
+ assert.match($('liveEvents').innerHTML,/&lt;script&gt;/);
+ $('turnPrompt').onclick(); assert.equal($('promptBox').hidden,false);
+ await $('copyTurn').onclick(); assert.match(copied,/You are CODEX/);
+ response={...response,status:'error',error:'claude: Invalid travel'};
+ await $('refreshLive').onclick();
+ assert.match($('liveStatus').textContent,/needs attention/);
+ assert.match($('turnText').value,/You are CLAUDE/);
+ response={...response,status:'processing',error:null,players:response.players.map(p=>({...p,submitted:true}))};
+ await $('refreshLive').onclick();
+ assert.match($('liveStatus').textContent,/Processing both/);
+ assert.equal($('turnPrompt').hidden,true);
+ response={...response,status:'finished',finished:true,day:30};
+ await $('refreshLive').onclick();assert.match($('liveStatus').textContent,/Match finished/);
+});

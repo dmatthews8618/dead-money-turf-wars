@@ -7,11 +7,17 @@ on:
     branches: [main]
     paths:
       - 'competition/moves/**'
-      - 'scripts/dead-money-turn.mjs'
-      - 'scripts/dead-money-auto.mjs'
+      - 'scripts/dead-money-*.mjs'
+      - 'scripts/dead-money-*.cjs'
       - '.github/workflows/dead-money-report.yml'
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [main]
+    paths:
+      - 'competition/moves/**'
 permissions:
   contents: write
+  pull-requests: write
 concurrency:
   group: dead-money-match
   cancel-in-progress: false
@@ -27,15 +33,43 @@ jobs:
         with:
           node-version: '22'
       - name: Test automatic turn processing
-        run: node --test scripts/dead-money-auto.test.mjs
-      - name: Process both submitted moves and generate reports
-        run: node scripts/dead-money-auto.mjs
+        run: node --test scripts/dead-money-*.test.*
+      - name: Validate and merge move-only submission
+        id: submit
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await require('./scripts/dead-money-submit.cjs')({github, context, core});
+            } catch (error) {
+              require('node:fs').writeFileSync(process.env.RUNNER_TEMP + '/dead-money-process.log', String(error.message));
+              core.setFailed(error.message);
+            }
+      - name: Refresh main after move merge
+        if: steps.submit.outcome == 'success'
+        run: git pull --ff-only origin main
+      - name: Process both submitted moves
+        id: process
+        if: steps.submit.outcome != 'failure'
+        continue-on-error: true
+        run: node scripts/dead-money-auto.mjs > "$RUNNER_TEMP/dead-money-process.log" 2>&1
+      - name: Publish live match status
+        env:
+          PROCESS_OUTCOME: ${{ steps.submit.outcome == 'failure' && 'failure' || steps.process.outcome }}
+          PROCESS_LOG: ${{ runner.temp }}/dead-money-process.log
+        run: node scripts/dead-money-public.mjs
       - name: Commit match and reports
         run: |
           git config user.name "dead-money-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add competition/match.json competition/REPORT.md competition/inbox/
+          git add competition/match.json competition/REPORT.md competition/inbox/ competition/public.json
           if ! git diff --cached --quiet; then
             git commit -m "Update Dead Money competition report [skip ci]"
             git push
           fi
+      - name: Flag invalid submission
+        if: steps.submit.outcome == 'failure' || steps.process.outcome == 'failure'
+        run: |
+          cat "$RUNNER_TEMP/dead-money-process.log"
+          exit 1
