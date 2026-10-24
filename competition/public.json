@@ -3,7 +3,7 @@
   "day": 3,
   "finished": false,
   "status": "waiting",
-  "updatedAt": "2026-10-24T19:30:53.787Z",
+  "updatedAt": "2026-10-24T22:30:53.552Z",
   "players": [
     {
       "id": "codex",
@@ -67,5 +67,5 @@
       "reason": "Corrected: travel costs £25 after purchases. Sell 25 Weed at 60 (1500), buy 3 Heroin (1161) + 3 Speed (240) leaving 99 cash to cover travel, then return to The Docks where Heroin (680) and Speed (135) were higher."
     }
   ],
-  "runUrl": "https://github.com/dmatthews8618/dead-money-turf-wars/actions/runs/40125627296"
+  "runUrl": "https://github.com/dmatthews8618/dead-money-turf-wars/actions/runs/40138880508"
 }
